@@ -1,0 +1,134 @@
+\documentclass[a4paper]{article}
+
+\usepackage[pages=all, color=black, position={current page.south}, placement=bottom, scale=1, opacity=1, vshift=5mm]{background}
+\usepackage[margin=1in]{geometry} % full-width
+
+% AMS Packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{qcircuit}
+\usepackage{physics}
+% Unicode
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{
+   unicode,
+%   colorlinks,
+%   breaklinks,
+%   urlcolor=cyan, 
+%   linkcolor=blue, 
+   pdfauthor={HyungGyu Min, Hakbae Lee},
+   pdftitle={A simple article template},
+   pdfsubject={A simple article template},
+   pdfkeywords={article, template, simple},
+   pdfproducer={LaTeX},
+   pdfcreator={pdflatex}
+}
+
+% Vietnamese
+%\usepackage{vntex}
+
+% Natbib
+\usepackage[sort&compress,numbers,square]{natbib}
+\bibliographystyle{naturemag}
+
+% Theorem, Lemma, etc
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}{Claim}[theorem]
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{criterion}[theorem]{Criterion}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{principle}[theorem]{Principle}
+
+\usepackage{graphicx, color}
+\graphicspath{{fig/}}
+
+%\usepackage[linesnumbered,ruled,vlined,commentsnumbered]{algorithm2e} % use algorithm2e for typesetting algorithms
+\usepackage{algorithm, algpseudocode} % use algorithm and algorithmicx for typesetting algorithms
+\usepackage{mathrsfs} % for \mathscr command
+
+\usepackage{lipsum}
+
+\usepackage{import}
+
+% Author info
+\title{Variable Selection for linear model using quantum algorithm}
+\author{YeonWoo Seo$^{12}$ \and Hakbae Lee $^1$}
+
+\date{
+   $^1$ Yonsei University \\ \texttt{annie9908@yonsei.ac.kr, hblee@yonsei.ac.kr}\\%
+   $^2$ Korea Quantum Computing \\ \texttt{hyunggyu.min@kqchub.com}
+}
+
+\begin{document}
+   \maketitle
+   
+   \begin{abstract}
+
+   \end{abstract}
+
+   \tableofcontents
+   
+   
+\section{Introduction}
+
+\section{Problem: Real Estate Portfolio Optimization Problem}
+
+
+
+
+
+
+
+
+
+
+
+\clearpage
+\section{Portfolio Optimization using QUBO}
+\subsection{QUBO and QISKIT Portfolio Optimization} 
+
+%% 여기에 QUBO 간단 설명 필요 
+
+The following is the portfolio optimization problem presented in the Qiskit document, which implements the typical mean-distribution portfolio optimization through QUBO. 
+
+\begin{align*}
+\min \ \ \, \quad &qx^{T}\displaystyle\sum x - \mu^{T}x \\ 
+\text{subject to}\quad &x\in\{0,1\}^n\,and\,1^Tx=B \quad(2.1)
+\end{align*}
+ 
+Here, $x$ is a binary variable indicating whether to select each asset. It has a value of $x[i]=1$ for selection and $x[i]=0$ for non-selection. $\mu$  is a vector representing the expected return on each asset. $\displaystyle\sum$  is the covariance matrix between the returns of each asset. $q$ is someone's risk preference. Finally, $B$  is a budget, which means that up to A assets can be selected. However, this example of Qiskit document is overly simplified compared to the typical portfolio optimization problem in financial markets. The reasons are as follows.
+\begin{enumerate}
+\item Although particular asset is expressed as a binary variable to convert portfolio optimization into a QUBO problem, it is not realistic to include only one or zero assets in the portfolio. Even if investors want to include assets with high returns and low volatility  at a high rate in the portfolio, it is difficult to achieve true optimization result under the unrealistic constraints of including only one or zero asset. 
+
+\item In general, for the average-distribution optimization, the proportion of the asset in the entire portfolio is optimized instead of deciding whether a particular asset is included or not. If you think about a portfolio that includes stocks, bonds, foreign exchange, and raw materials, it is more realistic to decide the proportion of bonds in the total portfolio than to decide whether to include one contract or not.
+
+\item The above example specified only $B$ assets can be selected out of total of $n$  possible assets. However, there are various financial products in the real financial market, including derivatives, and institutional investors can access all of these products. Therefore, it is not realistic to limit the number of total assets in advance and to limit the number of assets that can be invested. 
+
+\item In the above example, there are no constraints on total available capital. In reality, no matter how good an asset with high returns and low volatility is, it is impossible to invest if the amount per contract exceeds the available capital. However, the example assumes that investors can include one of every asset without regarding the price. 
+
+\end{enumerate}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=1.0\linewidth]{figure5.jpg}
+%     \caption{Real Datasets Experiments}
+%     \label{fig:Figure 5}
+% \end{figure}
+
+
+
+\end{document}
